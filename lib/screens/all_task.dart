@@ -24,7 +24,7 @@ class AllTask extends StatelessWidget {
     final rightDeleteIcon=Container(
       margin:  const EdgeInsets.only(bottom: 10),
       child: Icon(Icons.delete,color: Colors.white,),
-      color: Colors.red,
+      color: Colors.redAccent,
       alignment: Alignment.centerRight,
 
     );
@@ -93,13 +93,22 @@ class AllTask extends StatelessWidget {
             confirmDismiss: (DismissDirection direction) async{
               if(direction==DismissDirection.startToEnd){
 
-                showModalBottomSheet(backgroundColor: Colors.yellow, barrierColor: Colors.transparent,context: context, builder:(_){
+                showModalBottomSheet(backgroundColor: Colors.transparent, barrierColor: Colors.transparent,context: context, builder:(_){
                   
                   return Container(
-                    height: 500,
+                    
+                    height: 550,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF2e3253).withOpacity(0.4),
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(20),
+                        topLeft: Radius.circular(20)
+                      )
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.only(left:20,),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ButtonWIdget(backgroundcolor: AppColors.mainColor, text: "View", textColor: Colors.white),
                         SizedBox(height: 20,),
