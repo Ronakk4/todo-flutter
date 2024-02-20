@@ -12,7 +12,7 @@ class TaskWidget extends StatelessWidget {
       height: MediaQuery.sizeOf(context).height/14,
       decoration: BoxDecoration(
         color: Color(0xFFeff0f8),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(0),
 
       ),
       child:Center (

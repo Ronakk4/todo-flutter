@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:todoflutterandgo/colors/app_colors.dart';
+import 'package:todoflutterandgo/widgets/buttons.dart';
 import 'package:todoflutterandgo/widgets/taskwidget.dart';
 
 class AllTask extends StatelessWidget {
@@ -12,6 +13,21 @@ class AllTask extends StatelessWidget {
       "try harder",
       "try harder",
     ];
+
+    final leftEditIcon=Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      color: Color(0xFF2e3253),
+      child: Icon(Icons.edit,color: Colors.white,),
+      alignment: Alignment.centerLeft,
+
+    );
+    final rightDeleteIcon=Container(
+      margin:  const EdgeInsets.only(bottom: 10),
+      child: Icon(Icons.delete,color: Colors.white,),
+      color: Colors.red,
+      alignment: Alignment.centerRight,
+
+    );
     
     return Scaffold(
       backgroundColor: Colors.white,
@@ -67,12 +83,52 @@ class AllTask extends StatelessWidget {
             itemBuilder: (context,index)
                  {
           return Dismissible(
+            background: leftEditIcon,
+            secondaryBackground: rightDeleteIcon,
             key: ObjectKey(index),
             onDismissed: (DismissDirection direction) =>{
+              print("after dismissed")
 
             } ,
             confirmDismiss: (DismissDirection direction) async{
-              return false;
+              if(direction==DismissDirection.startToEnd){
+
+                showModalBottomSheet(backgroundColor: Colors.yellow, barrierColor: Colors.transparent,context: context, builder:(_){
+                  
+                  return Container(
+                    height: 500,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left:20,),
+                      child: Column(
+                      children: [
+                        ButtonWIdget(backgroundcolor: AppColors.mainColor, text: "View", textColor: Colors.white),
+                        SizedBox(height: 20,),
+                         ButtonWIdget(backgroundcolor: AppColors.mainColor, text: "edit", textColor: Colors.white),
+                       
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      ],
+                      
+                      
+                      
+                      
+                      
+                      
+                      ),
+                    )
+                  );
+                  
+                });
+                return false;
+              }
+              else{
+                return Future.delayed(Duration(seconds: 1),() =>direction==DismissDirection.endToStart);
+              }
             },
             child: Container(
               margin: const EdgeInsets.only(left:20,top:10,right: 20),
