@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:todoflutterandgo/colors/app_colors.dart';
 import 'package:todoflutterandgo/widgets/buttons.dart';
 import 'package:todoflutterandgo/widgets/taskwidget.dart';
+import 'package:get/get.dart';
 
 class AllTask extends StatelessWidget {
   const AllTask({super.key});
@@ -37,7 +38,10 @@ class AllTask extends StatelessWidget {
           Container(
             padding: const EdgeInsets.only(top :60,left: 20),
             alignment: Alignment.topLeft,
-            child: Icon(Icons.arrow_back),
+            child: InkWell(
+
+             
+              child: Icon(Icons.arrow_back)),
             width: double.maxFinite,
             height:MediaQuery.of(context).size.height/3.2,
             decoration: const BoxDecoration(
