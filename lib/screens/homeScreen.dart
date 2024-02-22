@@ -7,7 +7,7 @@ import 'package:todoflutterandgo/widgets/buttons.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -27,61 +27,63 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             RichText(
               text: TextSpan(
-                  text: "Hello",
-                  style: TextStyle(
-                      color: AppColors.mainColor,
-                      fontSize: 60,
-                      fontWeight: FontWeight.bold),
-                  children: [
-                    TextSpan(
-                      text: "\nStart your beautiful day",
-                      style: TextStyle(
-                        color: AppColors.smallTextColor,
-                        fontSize: 14,
-                      ),
-                    )
-                  ]),
+                text: "Hello",
+                style: TextStyle(
+                  color: AppColors.mainColor,
+                  fontSize: 60,
+                  fontWeight: FontWeight.bold,
+                ),
+                children: [
+                  TextSpan(
+                    text: "\nStart your beautiful day",
+                    style: TextStyle(
+                      color: AppColors.smallTextColor,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height / 2.5,
             ),
             InkWell(
-              onTap:(){
-                Get.to(()=>{
-                   Get.to(
-                    () => Addtask(),
-                    transition: Transition.fade,
-                    duration: Duration(seconds: 1),)
-
-
-                });
+              onTap: () {
+                Get.to(
+                  () => Addtask(),
+                  transition: Transition.fade,
+                  duration: Duration(seconds: 1),
+                );
               },
               child: ButtonWIdget(
-                  backgroundcolor: AppColors.mainColor,
-                  text: "Add Task",
-                  textColor: Colors.white),
+                backgroundcolor: AppColors.mainColor,
+                text: "Add Task",
+                textColor: Colors.white,
+              ),
             ),
             SizedBox(height: 20),
             InkWell(
-                onTap: () {
-                  Get.to(
-                    () => AllTask(),
-                    transition: Transition.fade,
-                    duration: Duration(seconds: 1),
-
-                  );
-                },
-                child: ButtonWIdget(
-                    backgroundcolor: Colors.white,
-                    text: "View All",
-                    textColor: AppColors.smallTextColor)),
-
-            //
+              onTap: () {
+                Get.to(
+                  () => AllTask(),
+                  transition: Transition.fade,
+                  duration: Duration(seconds: 1),
+                );
+              },
+              child: ButtonWIdget(
+                backgroundcolor: Colors.white,
+                text: "View All",
+                textColor: AppColors.smallTextColor,
+              ),
+            ),
           ],
         ),
         decoration: const BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover, image: AssetImage("assets/welcome.jpg"))),
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage("assets/welcome.jpg"),
+          ),
+        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:todoflutterandgo/colors/app_colors.dart';
+import 'package:todoflutterandgo/screens/homeScreen.dart';
 import 'package:todoflutterandgo/widgets/buttons.dart';
 import 'package:todoflutterandgo/widgets/taskwidget.dart';
 import 'package:get/get.dart';
@@ -41,7 +42,16 @@ class AllTask extends StatelessWidget {
             child: InkWell(
 
              
-              child: Icon(Icons.arrow_back)),
+              child: InkWell(
+                onTap: () {
+                 Get.to( HomeScreen(),
+                  transition:Transition.fade,
+                 );
+
+                },
+                
+                
+                child: Icon(Icons.arrow_back))),
             width: double.maxFinite,
             height:MediaQuery.of(context).size.height/3.2,
             decoration: const BoxDecoration(
