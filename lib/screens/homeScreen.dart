@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:todoflutterandgo/Controllers/data_controler.dart';
 import 'package:todoflutterandgo/colors/app_colors.dart';
 import 'package:todoflutterandgo/screens/add_task.dart';
 import 'package:todoflutterandgo/screens/all_task.dart';
 import 'package:todoflutterandgo/widgets/buttons.dart';
 import 'package:get/get.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,6 +15,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final DataControler dataController = Get.find<DataControler>();
+
+  // @override
+  //  void initState() {
+  //  super.initState();
+  //  fetchData();
+  //  }
+
+  // Future<void> fetchData() async {
+  //   await dataController.getData();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

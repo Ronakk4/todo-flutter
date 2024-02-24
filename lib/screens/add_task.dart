@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:todoflutterandgo/colors/app_colors.dart';
+import 'package:todoflutterandgo/screens/homeScreen.dart';
 import 'package:todoflutterandgo/widgets/TextFieldWidget.dart';
 import 'package:todoflutterandgo/widgets/buttons.dart';
 
@@ -29,7 +31,19 @@ class Addtask extends StatelessWidget {
           Column(
             children: [
               SizedBox(height: 16,),
-              IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back),color: AppColors.secondaryColor,)
+            InkWell(
+              onTap: () {
+                Get.to(HomeScreen(),
+                transition: Transition.fade,
+                duration: Duration(seconds: 1),
+                
+                
+                )
+              ;
+              },
+              child: IconButton(onPressed: (){
+                Get.back();
+              }, icon: Icon(Icons.arrow_back),color: AppColors.secondaryColor,))
 
             ],
           ),
