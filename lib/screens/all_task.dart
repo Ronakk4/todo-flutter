@@ -28,9 +28,12 @@ class _AllTaskState extends State<AllTask> {
   Future<void> fetchData() async {
     await dataController.getData();
     List<dynamic> m1 = dataController.myData;
-    for (var item in m1) {
-      myData.add(item['Taskname'].toString());
-    }
+    setState(() {
+      myData.clear(); // Clear existing data
+      for (var item in m1) {
+        myData.add(item['task_name'].toString());
+      }
+    });
     print('Fetched data: $myData');
   }
 
@@ -104,7 +107,7 @@ class _AllTaskState extends State<AllTask> {
                 Icon(Icons.calendar_month_sharp, color: AppColors.secondaryColor),
                 SizedBox(width: 10),
                 Text(
-                  "2",
+                  myData.length.toString(),
                   style: TextStyle(
                     fontSize: 20,
                     color: AppColors.secondaryColor,

@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:todoflutterandgo/Controllers/data_controler.dart';
 import 'package:todoflutterandgo/colors/app_colors.dart';
 import 'package:todoflutterandgo/screens/homeScreen.dart';
+import 'package:todoflutterandgo/services/services.dart';
 import 'package:todoflutterandgo/widgets/TextFieldWidget.dart';
 import 'package:todoflutterandgo/widgets/buttons.dart';
 
 class Addtask extends StatelessWidget {
+  
   const Addtask({super.key});
+  
 
   @override
+  
   Widget build(BuildContext context) {
     TextEditingController nameController=TextEditingController();
     TextEditingController detailController=TextEditingController();
+    DataService dataService = DataService();
     return Scaffold(
       body: Container(
         width: double.maxFinite,
@@ -53,7 +59,14 @@ class Addtask extends StatelessWidget {
              SizedBox(height: 20,),
               TextFieldWidget(textFieldController: detailController, hintText:"Task details", borderRadius: 15,maxlines: 3),
               SizedBox(height: 20,),
-            ButtonWIdget(backgroundcolor: AppColors.mainColor, text: "Add", textColor: Colors.white)
+            InkWell(
+              onTap: () {
+                String taskName=nameController.text;
+                String taskDetails=detailController.text;
+                dataService.postData(taskName, taskDetails);
+
+              },
+              child: ButtonWIdget(backgroundcolor: AppColors.mainColor, text: "Add", textColor: Colors.white))
             ],
           ),
           SizedBox(height: MediaQuery.sizeOf(context).height/6,),
